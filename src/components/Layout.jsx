@@ -21,6 +21,7 @@ import {
   Landmark,
   Building2,
   LayoutGrid,
+  BadgeCheck,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
@@ -111,6 +112,11 @@ export default function Layout() {
           <NavLink to="/profile" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
             <UserRound size={19} />
             Profil
+          </NavLink>
+          <NavLink to="/kyc" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+            <BadgeCheck size={19} />
+            Vérification
+            {account && !account.kyc_confirmed && <span className="nav-dot">!</span>}
           </NavLink>
           <NavLink to="/notifications" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
             <Bell size={19} />

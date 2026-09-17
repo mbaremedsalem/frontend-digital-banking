@@ -18,6 +18,7 @@ import {
   Lock,
   User as UserIcon,
 } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
 import { useToast } from '../context/ToastContext'
@@ -51,6 +52,7 @@ export default function Profile() {
   const { user, account, kyc, displayName, logout, refresh } = useAuth()
   const { theme, toggle } = useTheme()
   const toast = useToast()
+  const navigate = useNavigate()
 
   const [showSecret, setShowSecret] = useState(false)
   const [editing, setEditing] = useState(false)
@@ -206,9 +208,14 @@ export default function Profile() {
                   )}
                 </div>
 
-                <button className="btn btn-ghost btn-block" style={{ marginTop: 14 }} onClick={() => setEditing(true)}>
-                  <Pencil size={16} /> Modifier mes informations
-                </button>
+                <div className="row" style={{ gap: 10, marginTop: 14 }}>
+                  <button className="btn btn-ghost grow" onClick={() => setEditing(true)}>
+                    <Pencil size={16} /> Modifier mes informations
+                  </button>
+                  <button className="btn btn-ghost" onClick={() => navigate('/kyc')}>
+                    <BadgeCheck size={16} /> Vérification
+                  </button>
+                </div>
               </>
             ) : (
               <form className="stack" style={{ marginTop: 16 }} onSubmit={saveProfile}>

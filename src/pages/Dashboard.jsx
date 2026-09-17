@@ -118,12 +118,17 @@ export default function Dashboard() {
             <ShieldAlert size={22} />
           </span>
           <div className="grow">
-            <strong style={{ fontSize: '.95rem' }}>Vérification KYC en attente</strong>
+            <strong style={{ fontSize: '.95rem' }}>Vérification d’identité requise</strong>
             <p className="mute-xs">
-              Votre compte est « {account.account_status} ». Certaines opérations peuvent être limitées tant que le KYC
-              n’est pas validé par un administrateur.
+              Votre compte est « {account.account_status} ».
+              {account.kyc_submitted
+                ? ' Votre dossier est en cours d’examen par nos équipes.'
+                : ' Déposez vos pièces justificatives pour faire vérifier votre compte.'}
             </p>
           </div>
+          <button className="btn btn-primary" onClick={() => navigate('/kyc')}>
+            {account.kyc_submitted ? 'Voir mon dossier' : 'Compléter mon dossier'}
+          </button>
         </div>
       )}
 

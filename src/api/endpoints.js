@@ -152,6 +152,15 @@ export const withdrawals = {
   validate: (code, password) => http.post(`/withdrawal-validate-api/${code}/`, { password }),
 }
 
+/* --------------------------------------------------- DOSSIER KYC */
+export const kyc = {
+  // GET /account/kyc/ -> { etat, kyc, compte, champs_requis }
+  get: () => http.get('/account/kyc/'),
+
+  // POST /account/kyc/ en multipart (photo, piece d'identite, signature)
+  submit: (formData) => http.post('/account/kyc/', formData),
+}
+
 /* ----------------------------------------- CATALOGUE DES SERVICES */
 export const services = {
   // GET /services-api/ -> { services: [], account_balance }
@@ -192,6 +201,7 @@ export const servicePayments = {
 
 export default {
   auth,
+  kyc,
   services,
   transfers,
   transactions,

@@ -25,6 +25,7 @@ import Teller from './pages/Teller'
 import Cards from './pages/Cards'
 import CardDetail from './pages/CardDetail'
 import Profile from './pages/Profile'
+import Kyc from './pages/Kyc'
 import Notifications from './pages/Notifications'
 import NotFound from './pages/NotFound'
 
@@ -83,6 +84,7 @@ export default function App() {
         <Route path="cards/:cardId" element={<CardDetail />} />
 
         <Route path="profile" element={<Profile />} />
+        <Route path="kyc" element={<Kyc />} />
         <Route path="notifications" element={<Notifications />} />
 
         <Route path="*" element={<NotFound />} />
