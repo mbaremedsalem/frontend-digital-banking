@@ -20,6 +20,7 @@ import {
   Banknote,
   Landmark,
   Building2,
+  LayoutGrid,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
@@ -31,6 +32,7 @@ const NAV = [
   { to: '/transfer', label: 'Transférer', icon: ArrowLeftRight },
   { to: '/request', label: 'Demander', icon: HandCoins },
   { to: '/withdraw', label: 'Retrait espèces', icon: Banknote },
+  { to: '/services', label: 'Services', icon: LayoutGrid },
   { to: '/agharina', label: 'Paiement Agharina', icon: Building2 },
   { to: '/requests', label: 'Demandes', icon: Receipt },
   { to: '/transactions', label: 'Transactions', icon: Wallet },

@@ -20,6 +20,7 @@ import Transactions from './pages/Transactions'
 import TransactionDetail from './pages/TransactionDetail'
 import Withdraw from './pages/Withdraw'
 import AgharinaPay from './pages/AgharinaPay'
+import Services from './pages/Services'
 import Teller from './pages/Teller'
 import Cards from './pages/Cards'
 import CardDetail from './pages/CardDetail'
@@ -71,6 +72,7 @@ export default function App() {
         <Route path="withdraw" element={<Withdraw />} />
 
         {/* Services partenaires */}
+        <Route path="services" element={<Services />} />
         <Route path="agharina" element={<AgharinaPay />} />
         <Route path="teller" element={<Teller />} />
 

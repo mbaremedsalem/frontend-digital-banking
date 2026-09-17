@@ -16,7 +16,7 @@ import {
   RefreshCw,
   ShieldAlert,
   Banknote,
-  Building2,
+  LayoutGrid,
 } from 'lucide-react'
 import { transactions as txApi, cards as cardsApi } from '../api/endpoints'
 import { useAuth } from '../context/AuthContext'
@@ -29,7 +29,7 @@ const QUICK = [
   { to: '/transfer', label: 'Transférer', icon: ArrowLeftRight },
   { to: '/request', label: 'Demander', icon: HandCoins },
   { to: '/withdraw', label: 'Retrait espèces', icon: Banknote },
-  { to: '/agharina', label: 'Paiement Agharina', icon: Building2 },
+  { to: '/services', label: 'Services', icon: LayoutGrid },
 ]
 
 export default function Dashboard() {

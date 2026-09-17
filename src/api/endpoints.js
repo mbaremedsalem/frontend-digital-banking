@@ -152,6 +152,16 @@ export const withdrawals = {
   validate: (code, password) => http.post(`/withdrawal-validate-api/${code}/`, { password }),
 }
 
+/* ----------------------------------------- CATALOGUE DES SERVICES */
+export const services = {
+  // GET /services-api/ -> { services: [], account_balance }
+  list: () => http.get('/services-api/'),
+
+  // POST /service-pay-api/<slug>/ -> paiement d'un service en mode manuel
+  pay: (slug, { reference, amount, password }) =>
+    http.post(`/service-pay-api/${slug}/`, { reference, amount, password }),
+}
+
 /* ------------------------------------------------- SERVICE : AGHARINA */
 export const agharina = {
   // GET /agharina-biens-api/ -> catalogue relaye depuis l'API partenaire
@@ -182,6 +192,7 @@ export const servicePayments = {
 
 export default {
   auth,
+  services,
   transfers,
   transactions,
   paymentRequests,

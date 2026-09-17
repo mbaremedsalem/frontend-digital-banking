@@ -46,7 +46,7 @@ moment du build, et `.env` n'étant pas versionné, Vercel ne le voit pas. Sans 
 fichier, l'application déployée appellerait `http://127.0.0.1:8000`.
 
 ```
-VITE_API_URL=https://digital-banking-3.onrender.com
+VITE_API_URL=https://back-digital-banking.onrender.com
 ```
 
 Ce n'est pas un secret : l'URL est de toute façon visible dans le code compilé.
