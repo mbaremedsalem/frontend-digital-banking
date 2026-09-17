@@ -122,6 +122,33 @@ export async function request(path, { method = 'GET', body, auth = true, signal,
   return data
 }
 
+/**
+ * Telecharge un fichier protege et renvoie une URL d'objet utilisable dans une
+ * balise img.
+ *
+ * Les pieces KYC sont servies derriere un controle d'acces : une balise img ne
+ * pouvant pas porter d'en-tete Authorization, il faut recuperer le binaire
+ * avec le jeton puis le transformer en blob. Penser a revokeObjectURL.
+ */
+export async function fetchBlobUrl(path, { signal } = {}) {
+  const appel = (token) =>
+    fetch(`${API_URL}${path}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      signal,
+    })
+
+  let res = await appel(tokens.access)
+
+  if (res.status === 401 && tokens.refresh) {
+    const fresh = await refreshAccessToken()
+    if (fresh) res = await appel(fresh)
+  }
+
+  if (!res.ok) throw new ApiError(`Fichier indisponible (${res.status})`, res.status, null)
+
+  return URL.createObjectURL(await res.blob())
+}
+
 export const http = {
   get: (path, opts) => request(path, { ...opts, method: 'GET' }),
   post: (path, body, opts) => request(path, { ...opts, method: 'POST', body }),

@@ -15,7 +15,7 @@ import {
   Check,
 } from 'lucide-react'
 import { kyc as kycApi } from '../api/endpoints'
-import { API_URL } from '../api/client'
+import AuthImage from '../components/AuthImage'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 import { ErrorBanner, Field, KeyValue, Loader } from '../components/ui'
@@ -86,23 +86,23 @@ function FileField({ label, hint, value, onChange, existant }) {
     return () => URL.revokeObjectURL(url)
   }, [value])
 
-  const affiche = apercu || (existant ? (existant.startsWith('http') ? existant : `${API_URL}${existant}`) : null)
+  const cadre = {
+    width: 92,
+    height: 70,
+    objectFit: 'cover',
+    borderRadius: 'var(--r-sm)',
+    border: '1px solid var(--border)',
+    flexShrink: 0,
+  }
 
   return (
     <Field label={label} hint={hint}>
       <div className="row" style={{ gap: 12, alignItems: 'flex-start' }}>
-        {affiche ? (
-          <img
-            src={affiche}
-            alt={label}
-            style={{
-              width: 92,
-              height: 70,
-              objectFit: 'cover',
-              borderRadius: 'var(--r-sm)',
-              border: '1px solid var(--border)',
-            }}
-          />
+        {apercu ? (
+          <img src={apercu} alt={label} style={cadre} />
+        ) : existant ? (
+          // Piece deja deposee : servie derriere authentification.
+          <AuthImage path={existant} alt={label} style={cadre} />
         ) : (
           <div
             className="center"

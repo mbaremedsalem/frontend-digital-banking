@@ -23,8 +23,9 @@ import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
 import { useToast } from '../context/ToastContext'
 import { KeyValue, Field, ErrorBanner } from '../components/ui'
+import AuthImage from '../components/AuthImage'
 import { auth as authApi } from '../api/endpoints'
-import { API_URL, tokens } from '../api/client'
+import { tokens } from '../api/client'
 import { money, dateLong, initials, copy } from '../utils/format'
 
 const KYC_FIELDS = [
@@ -155,10 +156,11 @@ export default function Profile() {
           <section className="card card-pad">
             <div className="row" style={{ gap: 16 }}>
               {kyc?.image ? (
-                <img
-                  src={kyc.image.startsWith('http') ? kyc.image : `${API_URL}${kyc.image}`}
+                <AuthImage
+                  path={kyc.image}
                   alt={displayName}
                   style={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover' }}
+                  fallback={<span className="avatar avatar-lg">{initials(displayName)}</span>}
                 />
               ) : (
                 <span className="avatar avatar-lg">{initials(displayName)}</span>
