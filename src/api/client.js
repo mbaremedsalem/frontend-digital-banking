@@ -7,7 +7,7 @@
  * - normalise les erreurs DRF en un message lisible
  */
 
-export const API_URL = (import.meta.env.VITE_API_URL || 'https://digital-banking-3.onrender.com').replace(/\/$/, '')
+export const API_URL = (import.meta.env.VITE_API_URL || 'https://back-digital-banking.onrender.com').replace(/\/$/, '')
 
 const ACCESS_KEY = 'pp_access'
 const REFRESH_KEY = 'pp_refresh'
